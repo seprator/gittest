@@ -83,7 +83,7 @@ function App() {
           name="quantity"
           onChange={handlequantity}
         />
-        <label htmlFor="price">Shipping price for one cubic metre:</label>
+        <label htmlFor="price">Shipping price for one CMB:</label>
         <input
           id="price"
           type="number"
