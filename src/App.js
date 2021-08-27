@@ -1,113 +1,148 @@
 import "./App.css";
-
+import { v4 as uuid } from "uuid";
 import { useState } from "react";
 
 function App() {
-  const [quantity, setquantity] = useState(null);
-  const handlequantity = () => {
-    return setquantity(document.getElementById("quantity").value);
+  const [info, setInfo] = useState({
+    length: null,
+    width: null,
+    hight: null,
+    quantity: null,
+    shipPrice: null,
+    productPrice: null,
+    productName: null,
+  });
+
+  const [display, setDisplay] = useState([]);
+
+  const handleChange = (e) => {
+    const name = e.target.name;
+    const value = e.target.value;
+    setInfo({ ...info, [name]: value });
   };
-  const [priceofp, setpriceofp] = useState(null);
-  const handlepriceofp = () => {
-    return setpriceofp(document.getElementById("priceofp").value);
-  };
-  const [hight, sethight] = useState(null);
-  const handlehight = () => {
-    return sethight(document.getElementById("hight").value);
-  };
-  const [price, setprice] = useState(null);
-  const handleprice = () => {
-    return setprice(document.getElementById("price").value);
-  };
-  const [width, setwidth] = useState(null);
-  const handlewidth = () => {
-    return setwidth(document.getElementById("width").value);
-  };
-  const [length, setlength] = useState(null);
-  const handlelength = () => {
-    return setlength(document.getElementById("length").value);
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (
+      info.hight &&
+      info.length &&
+      info.width &&
+      info.quantity &&
+      info.productPrice
+    ) {
+      const newinfo = { ...info, id: uuid() };
+      setDisplay([...display, newinfo]);
+      setInfo({
+        length: "",
+        width: "",
+        hight: "",
+        quantity: "",
+        shipPrice: "",
+        productPrice: "",
+        productName: "",
+      });
+    }
   };
 
-  const calccube = () => {
-    let results = (hight * width * length * quantity) / 1000000;
-    let priceresult = results * price;
-    let priceofproducts = priceofp * quantity;
-    let total = priceresult + priceofproducts;
-    
-
-    setresult(`CBM: ${results} m`);
-    setpriceresult(`Price of shipping: ${priceresult} $`);
-    setpriceofpro(`Price of products: ${priceofproducts} $`);
-    setpricetotal(`Total price: ${total} $`);
-  };
-  const [priceofpro, setpriceofpro] = useState("Price of products: 0 $");
-  const [result, setresult] = useState("CBM: 0 m");
-  const [priceresult, setpriceresult] = useState("Price of shipping: 0 $");
-  const [pricetotal, setpricetotal] = useState("Total price: 0 $");
   return (
     <>
       <h1>Calculate CBM</h1>
-      <section>
-        <label htmlFor="hight">Hight:</label>
-        <input
-          id="hight"
-          type="number"
-          defaultValue={hight}
-          placeholder="cm"
-          name="hight"
-          onChange={handlehight}
-        />
-        <label htmlFor="length">Length:</label>
-        <input
-          id="length"
-          type="number"
-          defaultValue={length}
-          placeholder="cm"
-          name="length"
-          onChange={handlelength}
-        />
-        <label htmlFor="width">Width:</label>
-        <input
-          id="width"
-          type="number"
-          defaultValue={width}
-          placeholder="cm"
-          name="width"
-          onChange={handlewidth}
-        />
-        <label htmlFor="quantity">Quantity:</label>
-        <input
-          id="quantity"
-          type="number"
-          defaultValue={quantity}
-          placeholder="number of items or boxs"
-          name="quantity"
-          onChange={handlequantity}
-        />
-        <label htmlFor="price">Shipping price for one CMB:</label>
-        <input
-          id="price"
-          type="number"
-          defaultValue={price}
-          placeholder="$"
-          name="price"
-          onChange={handleprice}
-        />{" "}
-        <label htmlFor="priceofp">Price of product:</label>
-        <input
-          id="priceofp"
-          type="number"
-          defaultValue={priceofp}
-          placeholder="$"
-          name="priceofp"
-          onChange={handlepriceofp}
-        />
-      </section>
-      <button onClick={() => calccube()}>Calculate</button>
-      <h2>{result}</h2>
-      <h2>{priceresult}</h2>
-      <h2>{priceofpro}</h2>
-      <h2>{pricetotal}</h2>
+      <article className="form">
+        <form className="form-control">
+          <label htmlFor="productName">product:</label>
+          <input
+            id="productName"
+            type="text"
+            value={info.productName}
+            placeholder="cm"
+            name="productName"
+            onChange={handleChange}
+          />
+          <label htmlFor="hight">Hight:</label>
+          <input
+            id="hight"
+            type="number"
+            value={info.hight}
+            placeholder="cm"
+            name="hight"
+            onChange={handleChange}
+          />
+          <label htmlFor="length">Length:</label>
+          <input
+            id="length"
+            type="number"
+            value={info.length}
+            placeholder="cm"
+            name="length"
+            onChange={handleChange}
+          />
+          <label htmlFor="width">Width:</label>
+          <input
+            id="width"
+            type="number"
+            value={info.width}
+            placeholder="cm"
+            name="width"
+            onChange={handleChange}
+          />
+          <label htmlFor="quantity">Quantity:</label>
+          <input
+            id="quantity"
+            type="number"
+            value={info.quantity}
+            placeholder="number of items or boxs"
+            name="quantity"
+            onChange={handleChange}
+          />
+          <label htmlFor="shipPrice">Shipping price for one CMB:</label>
+          <input
+            id="shipPrice"
+            type="number"
+            value={info.shipPrice}
+            placeholder="$"
+            name="shipPrice"
+            onChange={handleChange}
+          />{" "}
+          <label htmlFor="productPrice">Price of product:</label>
+          <input
+            id="productPrice"
+            type="number"
+            value={info.productPrice}
+            placeholder="$"
+            name="productPrice"
+            onChange={handleChange}
+          />
+          <button type="submit" className="btn" onClick={handleSubmit}>
+            Calculate
+          </button>
+        </form>
+      </article>
+      <article>
+        {display.map((info) => {
+          const {
+            id,
+            length,
+            hight,
+            width,
+            shipPrice,
+            quantity,
+            productPrice,
+          } = info;
+          let cmb_el =
+            (info.width * info.hight * info.length * info.quantity) / 1000000;
+          let shipPrice_el = cmb_el * info.shipPrice;
+          let productPrice_el = info.quantity * info.productPrice;
+          let total_el = productPrice_el * 1 + shipPrice_el;
+          return (
+            <div key={id} className="item">
+              <h4>Name: {info.productName}</h4>
+              <h4>CMB: {cmb_el} $</h4>
+              <h4>Shipping{shipPrice_el} $</h4>
+              <h4>Products: {productPrice_el} $</h4>
+              <h4>Total: {total_el} $</h4>
+            </div>
+          );
+        })}
+      </article>
     </>
   );
 }
