@@ -32,7 +32,7 @@ function App() {
     let results = (hight * width * length * quantity) / 1000000;
     let priceresult = results * price;
     let vary = priceofp * 1;
-    let total = priceresult + vary;
+    let total = priceresult + priceofproducts;
     let priceofproducts = vary * quantity;
 
     setresult(`CBM: ${results} m`);
