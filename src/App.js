@@ -33,11 +33,11 @@ function App() {
     let priceresult = results * price;
     let vary = priceofp * 1;
     let total = priceresult + vary;
-    priceofprofucts = vary * quantity;
+    let priceofproducts = vary * quantity;
 
     setresult(`CBM: ${results} m`);
     setpriceresult(`Price of shipping: ${priceresult} $`);
-    setpriceofpro(`Price of products: ${priceofprofucts} $`);
+    setpriceofpro(`Price of products: ${priceofproducts} $`);
     setpricetotal(`Total price: ${total} $`);
   };
   const [priceofpro, setpriceofpro] = useState("Price of products: 0 $");
