@@ -31,9 +31,9 @@ function App() {
   const calccube = () => {
     let results = (hight * width * length * quantity) / 1000000;
     let priceresult = results * price;
-    let vary = priceofp * 1;
+    let priceofproducts = priceofp * quantity;
     let total = priceresult + priceofproducts;
-    let priceofproducts = vary * quantity;
+    
 
     setresult(`CBM: ${results} m`);
     setpriceresult(`Price of shipping: ${priceresult} $`);
