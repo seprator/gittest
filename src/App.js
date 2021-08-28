@@ -46,14 +46,16 @@ function App() {
   return (
     <>
       <div className="">
-        <h1 className="mx-auto flex justify-center">Calculate CBM</h1>
+        <h1 className="mx-auto flex justify-center bg-black text-white rounded-md max-w-xs">
+          Calculate CBM
+        </h1>
         <article className="">
-          <form className="bg-white container flex-col flex max-w-md align-middle justify-center mx-auto border-1 shadow-md rounded-md p-1 m-4 drop-shadow-md">
-            <label className="" htmlFor="productName">
+          <form className="bg-white container flex-col flex max-w-md align-middle justify-center mx-auto border-t-2 shadow-md rounded-md p-1 m-2 drop-shadow-md ">
+            <label className="bg-gray-100" htmlFor="productName">
               product:
             </label>
             <input
-              className="bg-gray-700 rounded-t-md"
+              className="bg-gray-700 rounded-sm focus:bg-black  border-transparent"
               id="productName"
               type="text"
               value={info.productName}
@@ -63,7 +65,7 @@ function App() {
             />
             <label htmlFor="hight">Hight:</label>
             <input
-              className="bg-gray-700"
+              className="bg-gray-700 rounded-sm focus:bg-black  border-transparent"
               id="hight"
               type="number"
               value={info.hight}
@@ -73,7 +75,7 @@ function App() {
             />
             <label htmlFor="length">Length:</label>
             <input
-              className="bg-gray-700"
+              className="bg-gray-700 rounded-sm focus:bg-black  border-transparent"
               id="length"
               type="number"
               value={info.length}
@@ -83,7 +85,7 @@ function App() {
             />
             <label htmlFor="width">Width:</label>
             <input
-              className="bg-gray-700"
+              className="bg-gray-700 rounded-sm focus:bg-black  border-transparent"
               id="width"
               type="number"
               value={info.width}
@@ -93,7 +95,7 @@ function App() {
             />
             <label htmlFor="quantity">Quantity:</label>
             <input
-              className="bg-gray-700"
+              className="bg-gray-700 rounded-sm focus:bg-black  border-transparent"
               id="quantity"
               type="number"
               value={info.quantity}
@@ -103,7 +105,7 @@ function App() {
             />
             <label htmlFor="shipPrice">Shipping price for one CMB:</label>
             <input
-              className="bg-gray-700"
+              className="bg-gray-700 rounded-sm focus:bg-black  border-transparent"
               id="shipPrice"
               type="number"
               value={info.shipPrice}
@@ -113,7 +115,7 @@ function App() {
             />{" "}
             <label htmlFor="productPrice">Price of product:</label>
             <input
-              className="bg-gray-700"
+              className="bg-gray-700 rounded-sm focus:bg-black  border-transparent"
               id="productPrice"
               type="number"
               value={info.productPrice}
@@ -121,7 +123,11 @@ function App() {
               name="productPrice"
               onChange={handleChange}
             />
-            <button type="submit" className="" onClick={handleSubmit}>
+            <button
+              type="submit"
+              className="p-3 text-white bg-black my-2 max-w-max mx-auto rounded-md"
+              onClick={handleSubmit}
+            >
               Calculate
             </button>
           </form>
