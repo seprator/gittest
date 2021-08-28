@@ -48,12 +48,12 @@ function App() {
       <div className="">
         <h1 className="mx-auto flex justify-center">Calculate CBM</h1>
         <article className="">
-          <form className="bg-white container flex-col flex max-w-lg align-middle justify-center mx-auto border-1 shadow-md">
-            <label className="bg-gray-100" htmlFor="productName">
+          <form className="bg-white container flex-col flex max-w-md align-middle justify-center mx-auto border-1 shadow-md rounded-md p-1 m-4 drop-shadow-md">
+            <label className="" htmlFor="productName">
               product:
             </label>
             <input
-              className="bg-gray-700"
+              className="bg-gray-700 rounded-t-md"
               id="productName"
               type="text"
               value={info.productName}
@@ -145,7 +145,7 @@ function App() {
             return (
               <div
                 key={id}
-                className="flex flex-col mx-auto justify-items-center  bg-gray-200 max-w-lg border-3 shadow-md my-1 px-1 flex-auto "
+                className="flex flex-col mx-auto justify-items-center  bg-gray-200 max-w-md border-3 shadow-md my-1 px-1 flex-auto rounded-md "
               >
                 <h4>Name: {info.productName}</h4>
                 <h4>CMB: {cmb_el} m</h4>
